@@ -78,6 +78,8 @@ src/
    不能用 `ctx.get('tuiScenes').open`——后者拿的是裸服务，会丢失调用者 fiber，
    报 `requires a live Cordis activation context`。
 
+新手复习手册（整体框架 + 每个函数为什么存在）：[docs/GUIDE.md](./docs/GUIDE.md)
+
 更多踩坑记录见 [docs/engineering-notes.md](./docs/engineering-notes.md)（18 节，每条都有"现象 / 定位 / 根因 / 解决"）。
 
 ## 数据口径（重要）
