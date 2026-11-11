@@ -1,0 +1,44 @@
+{
+  "name": "context-ledger",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    "./host": {
+      "types": "./lib/host.d.ts",
+      "default": "./lib/host.js"
+    },
+    "./tui": {
+      "types": "./lib/tui.d.ts",
+      "default": "./lib/tui.js"
+    }
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test \"src/__tests__/*.test.ts\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-harness-tui/dsh-tui": "*"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml"
+  ],
+  "engines": {
+    "node": "^22.19 || >=24"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "link:/Users/alax/dsh-tui/node_modules/@deepseek-ai/cordis",
+    "@deepseek-harness-tui/dsh-tui": "link:/Users/alax/dsh-tui",
+    "@types/node": "link:/Users/alax/dsh-tui/node_modules/@types/node",
+    "typescript": "link:/Users/alax/dsh-tui/node_modules/typescript"
+  }
+}

@@ -1,0 +1,17 @@
+# context-ledger 的加载清单。
+#
+# 这个文件告诉 DSH：「装上这个插件包之后，要往运行时里插哪几个插件」。
+# 没有它，package.json 里那个 dsh.bundle 就指向空，插件根本不会被加载。
+#
+# 两条都要：host 提供数据，tui 提供 /context 场景。
+# 在 headless / web 这类没有 tuiScenes 的组合里，tui 插件会静默跳过注册。
+
+- insert:
+    - id: context-ledger-host
+      name: 'context-ledger/host'
+    - id: context-ledger-tui
+      name: 'context-ledger/tui'
+
+# 为什么分成两个：宿主侧依赖 tokenMeter / sessions，TUI 侧依赖
+# tuiScenes / commands。分开之后，某个组合缺 TUI 服务时，
+# 只有 tui 那一行会静默降级，宿主照常工作。

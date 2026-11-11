@@ -1,0 +1,14 @@
+# B 组：激进压缩配置（实验用，不要用于日常）
+#
+# 默认配置：thresholdRatio 0.8、headroomTokens 65536、retainRatio 0.16
+#   在 1M 窗口上要撑到 ~60 万 token 才会触发压缩，我们的任务根本够不着。
+#
+# B 组把阈值降到 0.8%（约 8300 token），保留比例降到 0.05%：
+#   6000 的固定开销 + 两三个文件的内容（约 3~5k）就能触发压缩；
+#   保留比例压到很低，是避免压完立刻又超过阈值、陷入反复压缩。
+- id: compaction-basic
+  config:
+    thresholdRatio: 0.008
+    retainRatio: 0.0005
+    headroomTokens: 4096
+    maxTokens: 4096

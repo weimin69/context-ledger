@@ -1,0 +1,42 @@
+{
+  "profile": "ledger-demo",
+  "tasks": 3,
+  "maxPromptTokens": {
+    "mean": 6039,
+    "median": 6038
+  },
+  "billedTokens": {
+    "mean": 6304,
+    "median": 6304
+  },
+  "compactions": 0,
+  "rows": [
+    {
+      "sessionId": "session-f7963b2a-999c-4e75-bdcc-2ff83188bc9a",
+      "turns": 1,
+      "calls": 1,
+      "maxPromptTokens": 6037,
+      "billedTokens": 6304,
+      "compactions": 0,
+      "failedCompactions": 0
+    },
+    {
+      "sessionId": "session-2c815b3f-7c68-4c41-b808-75e67f8ee3ce",
+      "turns": 1,
+      "calls": 1,
+      "maxPromptTokens": 6042,
+      "billedTokens": 6398,
+      "compactions": 0,
+      "failedCompactions": 0
+    },
+    {
+      "sessionId": "session-357ecec9-14cd-4dbe-a754-839e9f3909bc",
+      "turns": 1,
+      "calls": 1,
+      "maxPromptTokens": 6038,
+      "billedTokens": 6211,
+      "compactions": 0,
+      "failedCompactions": 0
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+# C 组：温和压缩配置（A/B 之后的调参尝试）
+#
+# 背景：B 组把阈值压到 0.8%、保留压到 0.05%，结果
+#   - 峰值确实低了 23%，
+#   - 但压缩 8 次、失败 4 次（"summary is not smaller than the shadowed content"），
+#   - 总消耗反升 36%。
+# 失败原因：可压的内容只剩两三百 token，摘要反而更大，后端放弃压缩。
+#
+# C 组把阈值抬到 1.5%（约 15600 token）、保留抬到 0.5%（约 5200 token）：
+#   - 每次压缩时被压的内容有上万 token，摘要一定更小，不容易失败；
+#   - 目标是把"压完之后"控制在阈值以下（约 6k 固定开销 + 5.2k 保留 + 摘要 ≈ 12k < 15.6k），
+#     避免立刻触发第二次压缩。
+- id: compaction-basic
+  config:
+    thresholdRatio: 0.015
+    retainRatio: 0.005
+    headroomTokens: 4096
+    maxTokens: 4096

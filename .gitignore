@@ -1,0 +1,17 @@
+# 编译产物（由 npm run build 生成）
+lib/
+
+# 依赖
+node_modules/
+
+# 系统垃圾
+.DS_Store
+
+# 本地实验输出（metrics/ 里只保留要留档的几份）
+metrics.json
+metrics-a.json
+metrics-b.json
+
+# 本地环境
+.env
+.env.local

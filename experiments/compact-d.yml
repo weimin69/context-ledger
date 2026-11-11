@@ -1,0 +1,14 @@
+# D 组：中间的阈值（B 太狠、C 太松，取中间）
+#
+# 已知边界：
+#   B 组 thresholdRatio 0.008（约 8300）  → 压缩 8 次，失败 4 次
+#   C 组 thresholdRatio 0.015（约 15600） → 压缩 0 次（任务峰值 13.4k / 16.8k 够不到/来不及）
+#
+# D 组取 1.2%（约 12500）：两个任务都能触发，压完约
+#   6000（固定开销）+ 4200（保留 0.4%）+ 摘要 ≈ 11000 < 12500，不会立刻二次触发。
+- id: compaction-basic
+  config:
+    thresholdRatio: 0.012
+    retainRatio: 0.004
+    headroomTokens: 4096
+    maxTokens: 4096
